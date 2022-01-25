@@ -6,9 +6,9 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.shut_fe.services.ApiClient
-import com.example.shut_fe.models.preference.Preference
 import com.example.shut_fe.models.User
+import com.example.shut_fe.models.preference.Preference
+import com.example.shut_fe.services.ApiClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -33,23 +33,31 @@ class PreferenceViewModel(
 
 
     init {
-        try {
-            coroutineScope.launch {
-                Log.d("AAAAAAAAAAAAAAAAAAAA", user.toString())
-                Log.d("BBBBBBBBBBBB", user.id.toString())
-                // ToDo : change user Id and fetch it from user
-                val response =
-                    user.id?.let { ApiClient.apiService.getPreference(it) }
-                if (response != null) {
-                    _navigateToLoginFragment.value = response.body()
-                }
+        coroutineScope.launch {
+            val userId = user.id!!
+            val response = ApiClient.apiService.getPreference(userId)
+            if (response.code() == 200) {
+                val body = response.body()
+                val newPreference = Preference(
+                    body?.id,
+                    body?.userId!!,
+                    body.maxSound!!,
+                    body.maxVibration!!,
+                    body.soundControl!!,
+                    body.colorAlert,
+                    body.soundAlert!!,
+                    body.ceil!!,
+                )
+                _preference.value = newPreference
+                Log.d("CCCCCCCCCCC", _preference.value.toString())
             }
-        } catch (e: Exception) {
+
+
         }
-    }
 
-    fun doneNavigating() {
-        _navigateToLoginFragment.value = null
-    }
+        fun doneNavigating() {
+            _navigateToLoginFragment.value = null
+        }
 
+    }
 }

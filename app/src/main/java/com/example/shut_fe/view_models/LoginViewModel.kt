@@ -43,13 +43,13 @@ class LoginViewModel(
                 return@launch
             }
             coroutineScope.launch {
-                _message = "Wrong email or password, please try again or create an account"
                 val response =
                     ApiClient.apiService.login(PostLogin(userForm.email!!, userForm.password!!))
                 if (response.code() == 200) {
                     _message = "Login successful"
                     val body = response.body()
-                    val newUser = User(body?.id,
+                    val newUser = User(
+                        body?.id,
                         body?.email!!,
                         body.password!!,
                         null,
@@ -64,7 +64,7 @@ class LoginViewModel(
                     _user.value = newUser
                     _navigateToPreferenceFragment.value = newUser
                 }
-
+                _message = "Wrong email or password, please try again or create an account"
             }
         }
     }

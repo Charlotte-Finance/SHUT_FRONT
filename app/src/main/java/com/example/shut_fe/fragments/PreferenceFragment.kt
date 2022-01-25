@@ -47,7 +47,7 @@ class PreferenceFragment : Fragment() {
         viewModel.navigateToLoginFragment.observe(viewLifecycleOwner, { user ->
             user?.let {
                 this.findNavController().navigate(PreferenceFragmentDirections.preferenceFragmentToLoginFragment())
-                viewModel.doneNavigating()
+                //viewModel.doneNavigating()
             }
         })
     }

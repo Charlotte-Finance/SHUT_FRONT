@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="viewModel"
             type="com.example.shut_fe.view_models.PreferenceViewModel" />
@@ -74,8 +76,8 @@
             app:layout_constraintStart_toStartOf="@+id/maxNoiseView"
             app:layout_constraintTop_toTopOf="@id/maxNoiseView" />
 
-        <EditText
-            android:id="@+id/editMaximumNoise"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/maximum_noise_form"
             android:layout_width="268dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -85,6 +87,7 @@
             android:hint="@string/maximum_noise_hint"
             android:inputType="number"
             android:minHeight="48dp"
+            android:text="@={viewModel.preference.maxSound}"
             app:layout_constraintEnd_toEndOf="@+id/maxNoiseView"
             app:layout_constraintStart_toStartOf="@+id/maxNoiseView"
             app:layout_constraintTop_toTopOf="@+id/maxNoiseTextView"
@@ -120,8 +123,8 @@
             app:layout_constraintStart_toStartOf="@+id/maxVibrationView"
             app:layout_constraintTop_toTopOf="@id/maxVibrationView" />
 
-        <EditText
-            android:id="@+id/editMaximumVibration"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/max_vibration_form"
             android:layout_width="268dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -131,6 +134,7 @@
             android:hint="@string/maximum_noise_hint"
             android:inputType="number"
             android:minHeight="48dp"
+            android:text="@={viewModel.preference.maxVibration}"
             app:layout_constraintEnd_toEndOf="@+id/maxVibrationView"
             app:layout_constraintStart_toStartOf="@+id/maxVibrationView"
             app:layout_constraintTop_toTopOf="@+id/maxVibrationTextView" />
@@ -230,8 +234,8 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="68dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="@+id/soundAlertView"
             app:layout_constraintHorizontal_bias="0.0"
