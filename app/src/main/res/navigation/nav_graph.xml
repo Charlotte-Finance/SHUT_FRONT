@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.shut_fe.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:ignore="ExtraText"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/loginFragmentToPreferenceFragment"
+            app:destination="@id/preferenceFragment" />
+        <action
+            android:id="@+id/loginFragmentToRegisterFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.shut_fe.fragments.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register">
+
+        <action
+            android:id="@+id/registerFragmentToLoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/preferenceFragment"
+        android:name="com.example.shut_fe.fragments.PreferenceFragment"
+        android:label="PreferenceFragment">
+        <argument
+            android:name="user"
+            app:argType="com.example.shut_fe.models.User"/>
+
+        <action
+            android:id="@+id/preferenceFragmentToLoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+
+</navigation>
+
+

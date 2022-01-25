@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">SHUT_FE</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="login_fragment_label">Login</string>
+    <string name="register_fragment_label">Register</string>
+    <string name="preference_fragment_label">Preferences</string>
+
+    <!-- Strings used for buttons for login -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logout">Log out</string>
+
+    <!-- Strings used for buttons for login/register -->
+    <string name="forename">First name</string>
+    <string name="name">Last name</string>
+    <string name="email">Email</string>
+    <string name="age">Age</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+
+    <!-- Strings used for preferences -->
+    <string name="maximum_noise_label">Maximum Noise (in dB)</string>
+    <string name="maximum_noise_hint">100dB</string>
+    <string name="maximum_vibration_label">Maximum Vibration</string>
+    <string name="maximum_vibration_hint">100</string>
+    <string name="set_volume_label">Enable sound control</string>
+    <string name="color_alert_label">Enable color alert</string>
+    <string name="sound_alert_label">Enable sound alert</string>
+
+    <!-- Strings used for musics -->
+    <string name="music1">Music 1</string>
+    <string name="music2">Music 2</string>
+    <string name="music3">Music 3</string>
+    <string name="music4">Music 4</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="device_name">Device Name</string>
+
+</resources>

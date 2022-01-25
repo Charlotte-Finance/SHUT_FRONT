@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.shut_fe.view_models.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.LoginFragment">
+
+        <!-- Forms -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_form"
+            android:layout_width="321dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="97dp"
+            android:autofillHints="emailAddress"
+            android:ems="10"
+            android:hint="@string/email"
+            android:text="@={viewModel.user.email}"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_form"
+            android:layout_width="321dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="192dp"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/password"
+            android:text="@={viewModel.user.password}"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--Login and Register buttons -->
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="171dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="327dp"
+            android:layout_marginBottom="356dp"
+            android:onClick="@{() -> viewModel.onValidateLogin()}"
+            android:text="@string/login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="171dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="389dp"
+            android:layout_marginBottom="280dp"
+            android:text="@string/register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

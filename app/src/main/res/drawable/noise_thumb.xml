@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <size
+        android:height="@dimen/noise_bar_thumb_size"
+        android:width="@dimen/noise_bar_thumb_size"
+        />
+    <solid android:color="@color/noise_bar_progress"/>
+</shape>

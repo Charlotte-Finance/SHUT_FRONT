@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.shut_fe.view_models.PreferenceViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.PreferenceFragment">
+
+        <!-- Device title -->
+        <TextView
+            android:id="@+id/textview_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="@string/device_name"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- Noise bar -->
+        <SeekBar
+            android:id="@+id/noiseBar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="409dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="50dp"
+            android:max="10"
+            android:progress="3"
+            android:progressDrawable="@drawable/noise_bar"
+            android:thumb="@drawable/noise_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_device" />
+
+
+        <!--Set maximum noise -->
+        <View
+            android:id="@+id/maxNoiseView"
+            android:layout_width="409dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E3E1E1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noiseBar"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:id="@+id/maxNoiseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/maximum_noise_label"
+            android:textColor="#616161"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/maxNoiseView"
+            app:layout_constraintTop_toTopOf="@id/maxNoiseView" />
+
+        <EditText
+            android:id="@+id/editMaximumNoise"
+            android:layout_width="268dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:ems="10"
+            android:hint="@string/maximum_noise_hint"
+            android:inputType="number"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/maxNoiseView"
+            app:layout_constraintStart_toStartOf="@+id/maxNoiseView"
+            app:layout_constraintTop_toTopOf="@+id/maxNoiseTextView"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+
+        <!--Set maximum vibration -->
+        <View
+            android:id="@+id/maxVibrationView"
+            android:layout_width="409dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E3E1E1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/maxNoiseView"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:id="@+id/maxVibrationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/maximum_vibration_label"
+            android:textColor="#616161"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/maxVibrationView"
+            app:layout_constraintTop_toTopOf="@id/maxVibrationView" />
+
+        <EditText
+            android:id="@+id/editMaximumVibration"
+            android:layout_width="268dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:ems="10"
+            android:hint="@string/maximum_noise_hint"
+            android:inputType="number"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/maxVibrationView"
+            app:layout_constraintStart_toStartOf="@+id/maxVibrationView"
+            app:layout_constraintTop_toTopOf="@+id/maxVibrationTextView" />
+
+
+        <!--Sound control -->
+        <View
+            android:id="@+id/soundControlView"
+            android:layout_width="409dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E3E1E1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/maxVibrationView"
+            tools:ignore="NotSibling" />
+
+        <Switch
+            android:id="@+id/soundControlSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:minHeight="48dp"
+            android:text="@string/set_volume_label"
+            app:layout_constraintStart_toStartOf="@+id/soundControlView"
+            app:layout_constraintTop_toTopOf="@id/soundControlView"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <SeekBar
+            android:id="@+id/soundBar"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:progress="30"
+            app:layout_constraintEnd_toEndOf="@+id/soundControlView"
+            app:layout_constraintStart_toStartOf="@+id/soundControlView"
+            app:layout_constraintTop_toTopOf="@+id/soundControlSwitch" />
+
+
+        <!--Color alert -->
+        <View
+            android:id="@+id/colorAlertView"
+            android:layout_width="409dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E3E1E1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/soundControlView"
+            tools:ignore="NotSibling" />
+
+        <Switch
+            android:id="@+id/colorAlertSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:minHeight="48dp"
+            android:text="@string/color_alert_label"
+            app:layout_constraintStart_toStartOf="@+id/colorAlertView"
+            app:layout_constraintTop_toTopOf="@id/colorAlertView"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+        <!--Sound alert -->
+        <View
+            android:id="@+id/soundAlertView"
+            android:layout_width="409dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="#E3E1E1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/colorAlertView"
+            tools:ignore="NotSibling" />
+
+        <Switch
+            android:id="@+id/soundAlertSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:minHeight="48dp"
+            android:text="@string/sound_alert_label"
+            app:layout_constraintStart_toStartOf="@+id/soundAlertView"
+            app:layout_constraintTop_toTopOf="@id/soundAlertView"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:layout_marginStart="40dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/soundAlertView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/soundAlertSwitch"
+            tools:ignore="MissingConstraints">
+
+            <RadioButton
+                android:id="@+id/music1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/music1" />
+
+            <RadioButton
+                android:id="@+id/music2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/music2" />
+
+            <RadioButton
+                android:id="@+id/music3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/music3" />
+
+            <RadioButton
+                android:id="@+id/music4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/music4" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_device"
+            app:layout_constraintVertical_bias="0.994" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
+
+
+

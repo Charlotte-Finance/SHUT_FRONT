@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.shut_fe.view_models.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.RegisterFragment">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/forenameForm"
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="70dp"
+            android:autofillHints="forename"
+            android:ems="10"
+            android:text="@={viewModel.user.forename}"
+            android:hint="@string/forename"
+            android:inputType="textPersonName"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastNameForm"
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="70dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/name"
+            android:text="@={viewModel.user.lastName}"
+            android:inputType="textPersonName"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toEndOf="@id/forenameForm"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailForm"
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="emailAddress"
+            android:ems="10"
+            android:hint="@string/email"
+            android:text="@={viewModel.user.email}"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastNameForm" />
+
+        <!-- To-Do : max age of 99 -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age_form"
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="age"
+            android:ems="10"
+            android:hint="@string/age"
+            android:inputType="number"
+            android:text="@={viewModel.user.age}"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toEndOf="@id/emailForm"
+            app:layout_constraintTop_toBottomOf="@id/lastNameForm" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pwdForm"
+            android:layout_width="400dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/password"
+            android:text="@={viewModel.user.password}"
+            android:inputType="textPassword"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailForm" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repeatPwdForm"
+            android:layout_width="400dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/repeat_password"
+            android:text="@={viewModel.user.repeatPassword}"
+            android:inputType="textPassword"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pwdForm" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addressForm"
+            android:layout_width="400dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="postalAddress"
+            android:ems="10"
+            android:hint="@string/address"
+            android:text="@={viewModel.user.address}"
+            android:inputType="text"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repeatPwdForm" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cityForm"
+            android:layout_width="400dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="city"
+            android:ems="10"
+            android:hint="@string/city"
+            android:text="@={viewModel.user.city}"
+            android:inputType="text"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addressForm" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/countryForm"
+            android:layout_width="400dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="country"
+            android:ems="10"
+            android:hint="@string/country"
+            android:text="@={viewModel.user.country}"
+            android:inputType="text"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cityForm" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGender"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryForm">
+
+            <RadioButton
+                android:id="@+id/radioM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:checked="@{viewModel.user.gender.equals(@string/man)}"
+                android:onClick="@{() ->viewModel.onGender(@string/man)}"
+                android:text="@string/man"
+                tools:ignore="RtlHardcoded" />
+
+            <RadioButton
+                android:id="@+id/radioF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:text="@string/woman"
+                android:checked="@{viewModel.user.gender.equals(@string/woman)}"
+                android:onClick="@{() ->viewModel.onGender(@string/woman)}"
+                tools:ignore="RtlHardcoded" />
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="171dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:text="@string/register"
+            android:onClick="@{() -> viewModel.onValidateRegister()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioGender" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
+
+
+
