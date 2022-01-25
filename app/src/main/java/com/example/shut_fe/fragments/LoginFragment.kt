@@ -39,6 +39,7 @@ class LoginFragment : Fragment() {
         viewModelFactory = LoginViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
         binding?.viewModel = viewModel
+        binding?.lifecycleOwner = this
         return binding?.root
     }
 

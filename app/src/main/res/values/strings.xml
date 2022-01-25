@@ -7,10 +7,11 @@
     <string name="register_fragment_label">Register</string>
     <string name="preference_fragment_label">Preferences</string>
 
-    <!-- Strings used for buttons for login -->
+    <!-- Strings used for buttons -->
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="logout">Log out</string>
+    <string name="save">Save</string>
 
     <!-- Strings used for buttons for login/register -->
     <string name="forename">First name</string>

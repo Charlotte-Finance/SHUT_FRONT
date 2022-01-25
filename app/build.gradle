@@ -9,6 +9,9 @@ android {
     compileSdk 31
 
     defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
         applicationId "com.example.shut_fe"
         minSdk 21
         targetSdk 31
@@ -62,4 +65,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
+}
+
+
+kapt {
+    generateStubs = true
 }

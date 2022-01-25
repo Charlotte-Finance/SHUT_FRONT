@@ -38,6 +38,10 @@ class PreferenceFragment : Fragment() {
         viewModelFactory = PreferenceViewModelFactory(application, user)
         viewModel = ViewModelProvider(this, viewModelFactory).get(PreferenceViewModel::class.java)
         binding?.viewModel = viewModel
+        binding?.lifecycleOwner = this
+
+        binding.apply {
+        }
         return binding?.root
     }
 
@@ -50,6 +54,9 @@ class PreferenceFragment : Fragment() {
                 //viewModel.doneNavigating()
             }
         })
+        binding?.logoutButton?.setOnClickListener {
+            findNavController().navigate(PreferenceFragmentDirections.preferenceFragmentToLoginFragment())
+        }
     }
 
 

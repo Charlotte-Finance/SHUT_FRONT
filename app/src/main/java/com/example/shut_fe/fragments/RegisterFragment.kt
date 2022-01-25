@@ -36,6 +36,7 @@ class RegisterFragment : Fragment() {
         viewModelFactory = RegisterViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(RegisterViewModel::class.java)
         binding?.viewModel = viewModel
+        binding?.lifecycleOwner = this
         return binding?.root
     }
 
