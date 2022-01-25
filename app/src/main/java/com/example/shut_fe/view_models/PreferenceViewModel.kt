@@ -9,12 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import com.example.shut_fe.models.User
 import com.example.shut_fe.models.preference.PostPreference
 import com.example.shut_fe.models.preference.Preference
-import com.example.shut_fe.models.user.PostUser
 import com.example.shut_fe.services.ApiClient
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 @SuppressLint("LongLogTag")
 class PreferenceViewModel(
@@ -23,14 +19,17 @@ class PreferenceViewModel(
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    private val _navigateToLoginFragment = MutableLiveData<Preference>()
     private val _preference = MutableLiveData<Preference>()
+    private val _volume = MutableLiveData<Int>()
+
 
     val preference: LiveData<Preference>
         get() = _preference
 
-    val navigateToLoginFragment: LiveData<Preference>
-        get() = _navigateToLoginFragment
+    val volume: LiveData<Int>
+        get() = _volume
+
+
 
 
     init {
@@ -47,7 +46,7 @@ class PreferenceViewModel(
                     body.soundControl!!,
                     body.colorAlert,
                     body.soundAlert!!,
-                    body.ceil!!,
+                    body.music!!,
                 )
                 _preference.value = newPreference
             }
@@ -79,9 +78,12 @@ class PreferenceViewModel(
         updatePreference(_preference)
     }
 
+    fun onMusicAlertChange(musicId: Int) {
+        _preference.value?.music = musicId
+        updatePreference(_preference)
+    }
 
-
-    private fun updatePreference(_preference: MutableLiveData<Preference>){
+    private fun updatePreference(_preference: MutableLiveData<Preference>) {
         coroutineScope.launch {
             val postPreference = PostPreference(
                 _preference.value?.id,
@@ -91,13 +93,19 @@ class PreferenceViewModel(
                 _preference.value?.soundControl!!,
                 _preference.value?.colorAlert,
                 _preference.value?.soundAlert!!,
-                _preference.value?.ceil!!
+                _preference.value?.music!!
             )
-            ApiClient.apiService.putPreference( postPreference.id!!, postPreference)
+            ApiClient.apiService.putPreference(postPreference.id!!, postPreference)
         }
     }
 
-    fun doneNavigating() {
-        _navigateToLoginFragment.value = null
+    fun repeatFun(): Job {
+        return coroutineScope.launch {
+            while(isActive) {
+                _volume.value = ApiClient.apiService.getVolume().body()
+                delay(100)
+            }
+        }
     }
+
 }

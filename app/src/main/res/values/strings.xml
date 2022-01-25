@@ -34,10 +34,10 @@
     <string name="sound_alert_label">Enable sound alert</string>
 
     <!-- Strings used for musics -->
-    <string name="music1">Music 1</string>
-    <string name="music2">Music 2</string>
-    <string name="music3">Music 3</string>
-    <string name="music4">Music 4</string>
+    <string name="music1">Marimba</string>
+    <string name="music2">Purge</string>
+    <string name="music3">Wake Up</string>
+    <string name="music4">Among Us</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="device_name">Device Name</string>
 

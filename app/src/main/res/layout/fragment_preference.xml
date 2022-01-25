@@ -46,8 +46,8 @@
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="35dp"
                     android:layout_marginEnd="50dp"
-                    android:max="10"
-                    android:progress="3"
+                    android:max="70"
+                    android:progress="@{viewModel.volume}"
                     android:progressDrawable="@drawable/noise_bar"
                     android:thumb="@drawable/noise_thumb"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -263,31 +263,35 @@
 
                     <RadioButton
                         android:id="@+id/music1"
+                        android:checked="@{viewModel.preference.music==1}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
+                        android:onClick="@{() -> viewModel.onMusicAlertChange(1)}"
                         android:text="@string/music1" />
 
                     <RadioButton
                         android:id="@+id/music2"
+                        android:checked="@{viewModel.preference.music==2}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
+                        android:onClick="@{() -> viewModel.onMusicAlertChange(2)}"
                         android:text="@string/music2" />
 
                     <RadioButton
                         android:id="@+id/music3"
+                        android:checked="@{viewModel.preference.music==3}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
+                        android:onClick="@{() -> viewModel.onMusicAlertChange(3)}"
                         android:text="@string/music3" />
 
                     <RadioButton
                         android:id="@+id/music4"
+                        android:checked="@{viewModel.preference.music==4}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:onClick="onRadioButtonClicked"
+                        android:onClick="@{() -> viewModel.onMusicAlertChange(4)}"
                         android:text="@string/music4" />
                 </RadioGroup>
 

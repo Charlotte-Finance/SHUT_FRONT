@@ -2,6 +2,7 @@ package com.example.shut_fe.fragments
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,21 +40,13 @@ class PreferenceFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(PreferenceViewModel::class.java)
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = this
-
-        binding.apply {
-        }
         return binding?.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.navigateToLoginFragment.observe(viewLifecycleOwner, { user ->
-            user?.let {
-                this.findNavController().navigate(PreferenceFragmentDirections.preferenceFragmentToLoginFragment())
-                //viewModel.doneNavigating()
-            }
-        })
+        viewModel.repeatFun()
         binding?.logoutButton?.setOnClickListener {
             findNavController().navigate(PreferenceFragmentDirections.preferenceFragmentToLoginFragment())
         }

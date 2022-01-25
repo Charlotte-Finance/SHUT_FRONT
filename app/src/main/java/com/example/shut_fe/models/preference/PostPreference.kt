@@ -9,5 +9,5 @@ data class PostPreference(
     var soundControl: Boolean? = null,
     var colorAlert: Boolean? = null,
     var soundAlert: Boolean? = null,
-    var ceil: String? = null,
+    var music: Int? = null,
 )
