@@ -2,10 +2,10 @@ package com.example.shut_fe.fragments
 
 import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +22,6 @@ class PreferenceFragment : Fragment() {
     private lateinit var viewModelFactory: PreferenceViewModelFactory
     private var binding: FragmentPreferenceBinding? = null
     private lateinit var user: User
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +39,7 @@ class PreferenceFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(PreferenceViewModel::class.java)
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = this
+        binding?.noiseBar?.isEnabled = false;
         return binding?.root
     }
 
@@ -47,6 +47,26 @@ class PreferenceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.repeatFun()
+        binding?.volumeBar?.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(
+                seek: SeekBar,
+                progress: Int, fromUser: Boolean
+            ) {
+                viewModel.onVolumeChange(progress)
+
+            }
+
+            override fun onStartTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is started
+            }
+
+            override fun onStopTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is stopped
+
+            }
+        })
+
         binding?.logoutButton?.setOnClickListener {
             findNavController().navigate(PreferenceFragmentDirections.preferenceFragmentToLoginFragment())
         }

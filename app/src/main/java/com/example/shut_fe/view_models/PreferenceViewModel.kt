@@ -30,8 +30,6 @@ class PreferenceViewModel(
         get() = _volume
 
 
-
-
     init {
         coroutineScope.launch {
             val userId = user.id!!
@@ -47,6 +45,7 @@ class PreferenceViewModel(
                     body.colorAlert,
                     body.soundAlert!!,
                     body.music!!,
+                    body.volume!!,
                 )
                 _preference.value = newPreference
             }
@@ -82,7 +81,11 @@ class PreferenceViewModel(
         _preference.value?.music = musicId
         updatePreference(_preference)
     }
-
+    fun onVolumeChange(volume: Int) {
+        Log.d("AAAAAAAAAAAAAAAAAAAAAAAAAA", volume.toString())
+        _preference.value?.volume = volume
+        updatePreference(_preference)
+    }
     private fun updatePreference(_preference: MutableLiveData<Preference>) {
         coroutineScope.launch {
             val postPreference = PostPreference(
@@ -93,7 +96,8 @@ class PreferenceViewModel(
                 _preference.value?.soundControl!!,
                 _preference.value?.colorAlert,
                 _preference.value?.soundAlert!!,
-                _preference.value?.music!!
+                _preference.value?.music!!,
+                _preference.value?.volume!!
             )
             ApiClient.apiService.putPreference(postPreference.id!!, postPreference)
         }
@@ -101,7 +105,7 @@ class PreferenceViewModel(
 
     fun repeatFun(): Job {
         return coroutineScope.launch {
-            while(isActive) {
+            while (isActive) {
                 _volume.value = ApiClient.apiService.getVolume().body()
                 delay(100)
             }

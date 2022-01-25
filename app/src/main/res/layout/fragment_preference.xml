@@ -181,11 +181,12 @@
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                 <SeekBar
-                    android:id="@+id/soundBar"
+                    android:id="@+id/volumeBar"
                     android:layout_width="409dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="45dp"
-                    android:progress="30"
+                    android:max="10"
+                    android:progress="@{viewModel.preference.volume}"
                     app:layout_constraintEnd_toEndOf="@+id/soundControlView"
                     app:layout_constraintStart_toStartOf="@+id/soundControlView"
                     app:layout_constraintTop_toTopOf="@+id/soundControlSwitch" />

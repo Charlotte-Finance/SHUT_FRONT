@@ -30,6 +30,8 @@ data class Preference(
     private var _soundAlert: Boolean? = null,
     @ColumnInfo(name = "music")
     private var _music: Int? = null,
+    @ColumnInfo(name = "volume")
+    private var _volume: Int? = null,
 ) : Parcelable, BaseObservable() {
 
     var id: Int?
@@ -83,7 +85,12 @@ data class Preference(
             _music = value
             notifyPropertyChanged(BR.music)
         }
-
+    var volume: Int?
+        @Bindable get() = _volume
+        set(value) {
+            _volume = value
+            notifyPropertyChanged(BR.volume)
+        }
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Int::class.java.classLoader) as? Int,
@@ -93,8 +100,8 @@ data class Preference(
         parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
         parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
         parcel.readValue(Int::class.java.classLoader) as? Int,
-    ) {
-    }
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(_id)
@@ -105,6 +112,7 @@ data class Preference(
         parcel.writeValue(_colorAlert)
         parcel.writeValue(_soundAlert)
         parcel.writeValue(_music)
+        parcel.writeValue(_volume)
     }
 
     override fun describeContents(): Int {
