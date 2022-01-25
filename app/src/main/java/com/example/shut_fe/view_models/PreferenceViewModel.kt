@@ -7,7 +7,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shut_fe.models.User
+import com.example.shut_fe.models.preference.PostPreference
 import com.example.shut_fe.models.preference.Preference
+import com.example.shut_fe.models.user.PostUser
 import com.example.shut_fe.services.ApiClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +23,6 @@ class PreferenceViewModel(
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private val _navigateToLoginFragment = MutableLiveData<Preference>()
     private val _preference = MutableLiveData<Preference>()
 
@@ -49,15 +50,54 @@ class PreferenceViewModel(
                     body.ceil!!,
                 )
                 _preference.value = newPreference
-                Log.d("CCCCCCCCCCC", _preference.value.toString())
             }
-
-
         }
+    }
 
-        fun doneNavigating() {
-            _navigateToLoginFragment.value = null
+    fun onMaxNoiseChange(maxSound: String) {
+        _preference.value?.maxSound = maxSound
+        updatePreference(_preference)
+    }
+
+    fun onMaxVibrationChange(maxVibration: String) {
+        _preference.value?.maxVibration = maxVibration
+        updatePreference(_preference)
+    }
+
+    fun onSoundControlChange(soundControl: Boolean) {
+        _preference.value?.soundControl = soundControl
+        updatePreference(_preference)
+    }
+
+    fun onColorAlertChange(colorAlert: Boolean) {
+        _preference.value?.colorAlert = colorAlert
+        updatePreference(_preference)
+    }
+
+    fun onSoundAlertChange(soundAlert: Boolean) {
+        _preference.value?.soundAlert = soundAlert
+        updatePreference(_preference)
+    }
+
+
+
+    private fun updatePreference(_preference: MutableLiveData<Preference>){
+        coroutineScope.launch {
+            val postPreference = PostPreference(
+                _preference.value?.id,
+                _preference.value?.userId!!,
+                _preference.value?.maxSound!!,
+                _preference.value?.maxVibration!!,
+                _preference.value?.soundControl!!,
+                _preference.value?.colorAlert,
+                _preference.value?.soundAlert!!,
+                _preference.value?.ceil!!
+            )
+            ApiClient.apiService.putPreference( postPreference.id!!, postPreference)
         }
+    }
 
+    fun doneNavigating() {
+        _navigateToLoginFragment.value = null
     }
 }

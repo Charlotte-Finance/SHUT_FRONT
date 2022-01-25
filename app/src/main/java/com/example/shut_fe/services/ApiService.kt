@@ -21,6 +21,6 @@ interface ApiService {
     @GET("users/{userId}/preferences")
     suspend fun getPreference(@Path("userId") userId : Int): Response<PostPreference>
 
-    @POST("preferences")
-    suspend fun putPreference(@Body preference: PostPreference): Response<PostPreference>
+    @POST("preferences/{id}")
+    suspend fun putPreference(@Path("id") id : Int, @Body preference: PostPreference): Response<PostPreference>
 }

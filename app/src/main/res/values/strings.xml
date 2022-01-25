@@ -28,9 +28,7 @@
 
     <!-- Strings used for preferences -->
     <string name="maximum_noise_label">Maximum Noise (in dB)</string>
-    <string name="maximum_noise_hint">100dB</string>
     <string name="maximum_vibration_label">Maximum Vibration</string>
-    <string name="maximum_vibration_hint">100</string>
     <string name="set_volume_label">Enable sound control</string>
     <string name="color_alert_label">Enable color alert</string>
     <string name="sound_alert_label">Enable sound alert</string>
